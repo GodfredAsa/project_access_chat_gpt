@@ -15,10 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+from drf_spectacular.views import SpectacularRedocView, SpectacularSwaggerView
+
+
 from base_app.views import query_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('chatGPT.urls')),
+
     path('', query_view, name='query'),
+    # path('response', query_view.get_chatGPT_response, name='response')
+    # path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    # # Redoc UI:
+    # path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 
 ]

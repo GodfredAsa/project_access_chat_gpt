@@ -3,7 +3,7 @@ from django.conf import settings
 import os
 import openai
 
-# OpenAI API Key
+# # OpenAI API Key
 if settings.OPENAI_API_KEY:
     openai.api_key = settings.OPENAI_API_KEY
 else:
