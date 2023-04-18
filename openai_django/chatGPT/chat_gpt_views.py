@@ -10,12 +10,9 @@ def get_chatGPT(request):
     data = request.data
     prompt = data['prompt']
     response = get_completion(prompt)
-    print("====================================== RESPONSE STARTED =================================")
     print(response)
-    print("====================================== END OF RESPONSE =================================")
+    return Response([response]) if type(response) == str else Response(response)
 
-    ret_json = response_processor(response=response)
-    return Response(ret_json)
 
 def response_processor(response: str):
     if "\n" in response:
@@ -25,7 +22,7 @@ def response_processor(response: str):
     
 
 @api_view(['GET'])
-def get_message(request):
+def get_message(_):
     return Response("This works Godfred")
 
 

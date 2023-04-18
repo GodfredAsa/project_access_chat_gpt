@@ -15,5 +15,4 @@ def get_completion(prompt):
         model='gpt-3.5-turbo',
         messages=[{"role": "user", "content": prompt }]
     )
-    response = query.get('choices')[0]['message']['content']
-    return response
+    return query.get('choices')[0]['message']['content']
